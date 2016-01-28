@@ -1,4 +1,4 @@
-# tier
+# trier
 ----
 tier is a middleware to try catch panic, so you won't worry about panic anymore.
 
