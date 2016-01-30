@@ -20,15 +20,20 @@ import "github.com/diankong/neomw/jwt"
   app.Use(jwt.Jwt("your_key"))
 ````
 If there is no valid token in Header, it will return an error msg with status 401
+
 If there is one, then it'll parse token to user info, and store it into ctx.Session.User
+
 So, in your route handle, you can use it like this:
+
 ````GO
   user := c.Session.User.(map[string]interface{})
   fmt.Println(user["name"])
 ````
 
 ### Sign a token
+
 In your route, if there is a panic:
+
 ````GO
     //information you want to store in token, usually a user name or anything you want
     user := map[string]interface{}{"name": "your_name"}
@@ -36,6 +41,7 @@ In your route, if there is a panic:
     token, err := jwt.Sign("your_key", user)
 ````
 Then, you can send this token to client, client need to put it into Header
+
 ````javascript
 Headers["Authorization"] = "Bearer "+ token;
 ````
